@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block home %} active {% endblock home %}
+
+{% block style %}
+<style>
+  .box {
+    /* border: 0.1px solid rgb(83, 78, 78);  */
+    /* backdrop-filter: blur(10px); */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: #f7f9fb;
+    padding: 20px 20px;
+    border-radius: 10px;
+    /* margin-top: 20px;
+    margin-left: 30px;
+    margin-right: 30px; */
+  }
+  .box1 {
+    width: 93%;
+    margin: auto;
+  }
+</style>
+{% endblock style %}
+
+{% block body %}
+
+
+
+
+<!-- <div id="ww_539e0d9537ee4" v='1.20' loc='auto' a='{"t":"responsive","lang":"en","ids":[],"cl_bkg":"image","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#81D4FA","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","sl_tof":"7","sl_sot":"fahrenheit","sl_ics":"one_a","font":"Arial"}'>Weather Data Source: <a href="https://wetterlabs.de/" id="ww_539e0d9537ee4_u" target="_blank">Wetter Labs De</a></div><script async src="https://srv2.weatherwidget.org/js/?id=ww_539e0d9537ee4"></script> -->
+
+<div class="container" style="padding: 10px 20px; height: fit-content;">
+  <br>
+  <div class="row">
+    <div class="col">
+      <div class="box" style="margin-top: 0px;">
+        <h4>COVID-19 Update</h4>
+        <hr>
+        {% for news in covidnews %}
+        <div class="row" style="font-size: 13px;">
+          <p><a href="{{news.link}}" target="_blank"> {{news.title}} </a> - {{news.source_id}}</p>
+        </div>
+        {% endfor %}
+      </div><br>
+    </div>
+    <div class="col">
+      <!-- <div id="ww_4f5267a14f526" v='1.20' loc='auto'
+        a='{"t":"horizontal","lang":"en","ids":[],"cl_bkg":"image","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#81D4FA","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","sl_sot":"fahrenheit","sl_ics":"one_a","font":"Arial"}'>
+        Weather Data Source: <a href="https://wetterlabs.de/" id="ww_4f5267a14f526_u" target="_blank">Wetter Labs De</a>
+      </div> -->
+      <!-- <script async src="https://srv2.weatherwidget.org/js/?id=ww_4f5267a14f526"></script> -->
+
+      <!-- <a class="weatherwidget-io" href="https://forecast7.com/en/17d3978d49/hyderabad/" data-label_1="HYDERABAD" data-label_2="WEATHER" data-theme="original" >HYDERABAD WEATHER</a>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script> -->
+
+      <script>
+        (function (d, s, id) {
+          if (d.getElementById(id)) {
+            if (window.__TOMORROW__) {
+              window.__TOMORROW__.renderWidget();
+            }
+            return;
+          }
+          const fjs = d.getElementsByTagName(s)[0];
+          const js = d.createElement(s);
+          js.id = id;
+          js.src = "https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
+
+          fjs.parentNode.insertBefore(js, fjs);
+        })(document, 'script', 'tomorrow-sdk');
+      </script>
+
+      <div class="tomorrow" data-location-id="132132" data-language="EN" data-unit-system="METRIC" data-skin="light"
+        data-widget-type="upcoming" style="padding-bottom:22px;position:relative; min-width: 90%;">
+        <a href="https://www.tomorrow.io/weather/" rel="nofollow noopener noreferrer" target="_blank"
+          style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;">
+          <img alt="Powered by Tomorrow.io" src="https://weather-website-client.tomorrow.io/img/powered-by-tomorrow.svg"
+            width="auto" height="auto" />
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div><br>
+<div class="box1">
+  <div class="row">
+    <div class="col">
+      <h4 align='start'>Headlines </h4>
+    </div>
+    <div class="col">
+      <p align='end'><a href="/latestnews" style="font-size: 13px; font-weight: bold; text-decoration: none;"> More
+          Headlines </a></p>
+    </div>
+  </div>
+  <div class="box">
+    {% for news in top_news %}
+    <div class="row">
+      <p><a href="{{news.link}}" target="_blank"> {{news.title}} </a> - {{news.source_id}}</p>
+    </div>
+    {% endfor %}
+  </div>
+  <br><br>
+</div>
+
+{% endblock body %}

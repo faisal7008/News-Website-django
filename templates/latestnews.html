@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block latestnews %} active {% endblock latestnews %}
+
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 0;">
+<nav class="nav-main" style="width:100%;">
+    <ul class="nav nav-tabs nav-fill" style="background-color: #54b4a7;">
+        <li class="nav-item">
+            <a class="nav-link {% if newstype == 'india' %}
+            {% block india %} {% endblock %}
+          {% endif %}" style="font-size: 14px;" href="/india">India</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if newstype == 'world' %}
+            {% block world %}{% endblock %}
+          {% endif %}" style="font-size: 14px;" href="/world">World</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if newstype == 'bussiness' %}
+            {% block bussiness %}{% endblock %}
+          {% endif %}" style="font-size: 14px;" href="/business">Business</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if newstype == 'technology' %}
+            {% block technology %}{% endblock %}
+          {% endif %}" style="font-size: 14px;" href="/technology">Technology</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if newstype == 'entertainment' %}
+            {% block entertainment %}{% endblock %}
+          {% endif %}" style="font-size: 14px;" href="/entertainment">Entertainment</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if newstype == 'sports' %}
+            {% block sports %}{% endblock %}
+          {% endif %}" style="font-size: 14px;" href="/sports">Sports</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if newstype == 'science' %}
+            {% block science %}{% endblock %}
+          {% endif %}" style="font-size: 14px;" href="/science">Science</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if newstype == 'health' %}
+            {% block health %}{% endblock %}
+          {% endif %}" style="font-size: 14px;" href="/health">Health</a>
+        </li>
+    </ul>
+  </nav>
+</nav>
+    {% block body1 %}{% endblock body1 %}
+    
+{% endblock body %}

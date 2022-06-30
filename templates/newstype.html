@@ -1,0 +1,82 @@
+{% extends 'latestnews.html' %}
+
+{% if newstype == 'india' %}
+  {% block india %}active{% endblock %}
+{% endif %}
+{% if newstype == 'world' %}
+  {% block world %}active{% endblock %}
+{% endif %}
+{% if newstype == 'bussiness' %}
+  {% block bussiness %}active{% endblock %}
+{% endif %}
+{% if newstype == 'entertainment' %}
+  {% block entertainment %}active{% endblock %}
+{% endif %}
+{% if newstype == 'technology' %}
+  {% block technology %}active{% endblock %}
+{% endif %}
+{% if newstype == 'sports' %}
+  {% block sports %}active{% endblock %}
+{% endif %}
+{% if newstype == 'science' %}
+  {% block science %}active{% endblock %}
+{% endif %}
+{% if newstype == 'health' %}
+  {% block health %}active{% endblock %}
+{% endif %}
+
+{% block style %}
+<style>
+    .card-title{
+        font-weight: 1000;
+    }
+    /* .card-text{
+        font-size: 13px;
+        
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+    } */
+    .card{
+      height: 400px;
+      
+      white-space: nowwrap;
+      overflow-x: hidden;
+      text-overflow: clip;
+    }
+</style>
+{% endblock style %}
+
+{% block body1 %}
+<br>
+<div class="row" style="margin-left: 15px; margin-right: 5px;">
+  
+  {% for news in top_news %}
+  <div class="col">
+    <div class="card" style="width: 18rem; background-color: #fff; border: none; border-radius: 10px; box-shadow: 0px 2px 4px rgb(0, 0, 0, 0.4);">
+      {% if news.image_url %}
+      <img src="{{news.image_url}}" class="card-img-top" alt="...">
+      {% endif %}
+      <div class="card-body">
+        <h6 class="card-title">{{news.title}}</h6>
+        <h6 align='end'  style="font-weight: 600; font-size: 13px;">
+        {{news.source_id}}
+        </h6>
+        <p class="card-text">{{news.description}}</p>
+        <a href="{{news.link}}" class="btn btn-primary" target='_blank'>Read More</a>
+      </div>
+    </div><br>
+  </div>
+
+  {% endfor %}
+  <!-- <script>
+    var p=document.getElementsByClassName('card-text'),
+    lineheight=parseInt(window.getComputedStyle(p).getPropertyValue("line-height"));
+    var lines=Math.floor(300/lineheight);
+    p.style['-webkit-line-clamp']=lines;
+  </script> -->
+</div><br>
+
+{% endblock body1 %}

@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% block newscheck %}active{% endblock newscheck %}
+
+{% block style %}
+<style>
+    * {
+    box-sizing: border-box;
+    }
+    /* Style the submit button */
+    form.example button {
+        margin: auto;
+    }
+
+    /* form.example button:hover {
+    background: #0b7dda;
+    } */
+
+    /* Clear floats */
+    form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+    }
+    option{
+        font-size: small;
+    }
+    .verdict{
+        padding: 20px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+   
+    .btn-group .btn{
+        height: 50px;
+        width: 90px;
+        font-size: large;
+        /* opacity: 1; */
+    }
+</style>
+{% endblock style %}
+
+{% block body %}
+<br>
+<div class="box" style="width: 60%; margin: auto; border: 2px solid black; padding: 0px 15px; box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+border: 1px solid rgba(255, 255, 255, 0.1);background-color: #fff; border-radius: 10px; text-align: center;">
+<br>
+<h3>Search here..</h3><hr style="height: 1.5px; color: rgba(0, 0, 0, 0.5);" >
+    <!-- The form -->
+    <form class="example" method="post" action="/newscheck">
+        {% csrf_token %}
+        <!-- <input type="text" placeholder="Search.." name="search">
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+        <button type="submit"><i class="fa fa-search"></i></button> -->
+        <div class="row" style="/*border: 3px solid saddlebrown;*/">
+            <div class="col-10" style="/*border: 3px solid seagreen;*/ padding: 10px 10px;">
+                <div class="row">
+                    <div class="col">
+                    <!-- <input type="text" placeholder="Search.." name="search"> -->
+                        <input type="text" class="form-control" name="title" id="exampleFormControlInput1" placeholder="Enter the news title.." value="{{title}}" required>
+                    </div>
+                </div>
+                <div class="row" style="padding: 12px 0px;">
+                    <div class="col">
+                        <select class="form-select" aria-label=".form-select-lg example" name="country">
+                            <option value="" disabled="disabled"  selected>Select Country</option>
+                            <option value="in">India</option>
+                            <option value="cn">China</option>
+                            <option value="au">Australia</option>
+                            <option value="gb">United Kingdom</option>
+                            <option value="us">United States of America</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <select class="form-select" aria-label=".form-select-lg example" name="category">
+                            <option value="" disabled="disabled"  selected>Select Category</option>
+                            <option value="world">World</option>
+                            <option value="business">Business</option>
+                            <option value="technology">Technology</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="sports">Sports</option>
+                            <option value="food">Food</option>
+                            <option value="health">Health</option>
+                            <option value="science">Science</option>
+                            <option value="politics">Politics</option>
+                            <option value="environment">Environment</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <select class="form-select" aria-label=".form-select-lg example" name="language">
+                            <option value="" disabled="disabled" selected>Select Language</option>
+                            <option value="en">English</option>
+                            <option value="hi">Hindi</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2" style="/*border: 3px solid seagreen; display: flex; justify-content: center; align-items: center;*/ margin-top: 12px;">
+                <button class="btn btn-primary" type="submit"><i class="fas fa-search" style="font-size: 25px;"></i></button>
+            </div>
+        </div>
+    </form>
+</div><br>
+<div class="verdict">
+    <!-- {% if prediction == True %}
+    <h2>Verdict : <b style="color: rgb(74, 206, 74);">{{prediction}}</b></h2>
+    {% else %}
+    <h2>Verdict : <b style="color: rgb(235, 37, 37);">{{prediction}}</b></h2>
+    {% endif %} -->
+    <h2>Verdict : </h2>&nbsp;&nbsp;
+    <div class="btn-group" role="group" aria-label="Basic example">
+        {% if prediction == True %}
+        <button type="button" class="btn btn-success" disabled>True</button>
+        <button type="button" class="btn btn-info" style="opacity: 0.1;" disabled>False</button>
+        {% elif prediction == False %}
+        <button type="button" class="btn btn-info" style="opacity: 0.1;" disabled>True</button>
+        <button type="button" class="btn btn-danger" disabled>False</button>
+        {% else %}
+        <button type="button" class="btn btn-info" disabled>True</button>
+        <button type="button" class="btn btn-info" disabled>False</button>
+        {% endif %}
+    </div>
+    <!-- <h2>Probability : <b>{{probability}}</b></h2>  -->
+</div>
+<div class="container" style="width: 85%; box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: #fff; border-radius: 10px; min-height: 100px; padding: 20px 20px;">
+    <h3>Results</h3><hr style="height: 2px; color: rgba(0, 0, 0, 0.5);">
+    {% for news in top_news %}
+      <div class="row"> <p><a href="{{news.link}}" target="_blank"> {{news.title}} </a>  - {{news.source_id}}</p> </div>
+    {% endfor %}
+</div>
+<br><br>
+
+{% endblock body %}

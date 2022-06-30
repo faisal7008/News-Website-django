@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css"
+    rel="stylesheet"
+    />
+    <title>NewsFactCheck</title>
+    <style>
+        body {
+            background-color: #edf5e1;
+        }
+        .box{
+            width: 390px; 
+            margin: auto;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .box1{
+        padding: 0px 20px;
+        }
+
+        .heading{
+        color: #00695c;
+        padding: 10px 20px;
+        }
+
+        .form-control{
+        outline: none;
+        border: none;
+        background-color: rgb(158, 207, 158);
+        }
+
+        .form-outline{
+        margin: auto;
+        }
+
+        .nav-link{
+        background-color: #2BBBAD;
+        }
+    </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/" style="color: #00695c;">Home</a></li>
+          <li class="breadcrumb-item">Register</li>
+        </ol>
+      </nav>
+    </div>
+  </nav>
+    <div class="box">
+        <div class="box1">
+            
+          <form action="/signup" method="post">
+            {% csrf_token %}
+            <h1 class="heading" align="center">Register</h1>
+            
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-4">
+              <div class="col">
+                <div class="form-outline">
+                  <input type="text" id="form3Example1" name="firstname" class="form-control" />
+                  <label class="form-label" for="form3Example1">First name</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-outline">
+                  <input type="text" id="form3Example2" name="lastname" class="form-control" />
+                  <label class="form-label" for="form3Example2">Last name</label>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <input type="email" id="form3Example3" name="email" class="form-control" />
+              <label class="form-label" for="form3Example3">Email address</label>
+            </div>
+          
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+              <input type="password" id="form3Example4" name="pass" class="form-control" />
+              <label class="form-label" for="form3Example4">Password</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="password" id="form3Example4" name="pass1" class="form-control" />
+              <label class="form-label" for="form3Example4">Repeat Password</label>
+            </div>
+          
+            <!-- Checkbox -->
+            <div class="form-check d-flex justify-content-center mb-4">
+              <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
+              <label class="form-check-label" for="form2Example33">
+                Subscribe to our newsletter
+              </label>
+            </div>
+          
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-success btn-block mb-4">Sign up</button>
+          
+            <!-- Register buttons -->
+            <div class="text-center">
+              <a href="/signin">Already registered ? Sign in </a>
+              <p>or sign up with:</p>
+              <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="fab fa-facebook-f"></i>
+              </button>
+          
+              <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="fab fa-google"></i>
+              </button>
+          
+              <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="fab fa-twitter"></i>
+              </button>
+              
+            </div><br>
+          </form>
+</div>
+</div>
+
+
+<!-- MDB -->
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"
+></script>
+</body>
+</html>
